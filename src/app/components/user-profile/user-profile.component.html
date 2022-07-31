@@ -1,0 +1,83 @@
+<div class="m-3 bodyBox">
+    <div class="d-flex">
+        <mat-card class="bold2 w-100">
+            User profile
+        </mat-card>
+        <mat-card style="opacity: 30%;" class="bold2 w-100">
+            Preferences
+        </mat-card>
+    </div>
+
+    <div class="img" *ngIf="age>0">
+        <div *ngIf="employee.employee_age <=30" class="">
+            <img class="profilePhoto1" src="../../../assets/minus 30.jfif" alt="minus30">
+        </div>
+        <div *ngIf="employee.employee_age > 30" class="">
+            <img class="profilePhoto2" src="../../../assets/plus 30.jfif" alt="plus30">
+        </div>
+    </div>
+
+    <div class="d-flex info textCenter">
+        <div class="pd">
+            <div class="text-xs">
+                Full name
+            </div>
+            <div class="bold">
+                {{employee?.employee_name }}
+            </div>
+        </div>
+        <div class="pd">
+            <div class="text-xs">
+                Age
+            </div>
+            <div class="bold">
+                {{employee?.employee_age }}
+            </div>
+        </div>
+        <div class="pd">
+            <div class="text-xs">
+                ID
+            </div>
+            <div class="bold">
+                {{employee?.id }}
+            </div>
+        </div>
+        <div class="pd">
+            <div class="text-xs">
+                Salary
+            </div>
+            <div class="bold">
+                $ {{employee?.employee_salary | number}}
+            </div>
+        </div>
+    </div>
+    <div class="btns">
+        <button class="btn btnEdit btnSize" (click)="openDialog(dialog)">Edit profile</button>
+        <button class="btn btn-primary btnSize">Save changes</button>
+    </div>
+</div>
+
+<app-sidebar [sidePosition]='"profile"'></app-sidebar>
+
+<ng-template #dialog>
+    <form [formGroup]="updateUserForm">
+
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput class="inputStyle" type="text" class="form-control" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Age</mat-label>
+            <input matInput class="inputStyle" type="number" formControlName="age">
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Salary</mat-label>
+            <input matInput class="inputStyle" type="number" formControlName="salary">
+        </mat-form-field>
+    </form>
+    <div style="margin-top: 2em; display: flex; justify-content: space-around">
+        <button (click)="updateUser()" class="btn btn-primary">Save</button>
+        <button (click)="closeModal()" class="btn btn-secondary">Close</button>
+    </div>
+</ng-template>

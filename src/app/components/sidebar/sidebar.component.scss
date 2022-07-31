@@ -1,0 +1,18 @@
+.sideBar {
+  margin: 1em;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  height: 10vh !important;
+}
+.icon {
+  cursor: pointer;
+  color: grey;
+  border-color: black;
+}
+.align-center {
+  text-align: center;
+}
+.selected {
+  color: #7b75fb;
+}

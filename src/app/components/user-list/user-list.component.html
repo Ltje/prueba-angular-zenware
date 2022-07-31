@@ -1,0 +1,90 @@
+<div class="m2 config">
+    <div class="d-flex">
+        <div class="addUser">
+            <mat-icon (click)="openDialog(dialog)">add_circle</mat-icon>
+
+        </div>
+        <div class="title">
+            Employees
+        </div>
+        <div class="filter">
+            <mat-icon *ngIf="!searching" (click)="searchToggle()">search</mat-icon>
+            <mat-icon *ngIf="searching" (click)="searchToggle()">close</mat-icon>
+        </div>
+    </div>
+    <div *ngIf="searching" class="search">
+        <mat-form-field class="searchInput" appearance="outline">
+            <mat-label>Type something</mat-label>
+            <input matInput type="text" [(ngModel)]="userSearch">
+            <button *ngIf="userSearch" matSuffix mat-icon-button aria-label="Clear" (click)="userSearch=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div [ngClass]="searching?'vh75':'back'" class="bodyBox">
+        <mat-card class="cardBox d-flex" *ngFor="let item of users|filter:userSearch;let i = index ">
+            <div class="align-left btn cardStyle pointer" *ngIf="totalUsers >0">
+                <div class="d-flex topCard">
+                    <div>
+                        {{item.id}}
+                    </div>
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="goToProfile(item.id)">Profile</button>
+                        <button (click)="deleteUser(item.id)" mat-menu-item>Delete</button>
+                    </mat-menu>
+                </div>
+                <div (click)="goToProfile(item.id)">
+                    <div class="name">
+                        {{item.employee_name}}
+                    </div>
+                    <div class="d-flex ">
+                        <div class="photo">
+                            <div *ngIf="item.employee_age <=30">
+                                <img class="profilePhoto1" src="../../../assets/minus 30.jfif" alt="minus30">
+                            </div>
+                            <div *ngIf="item.employee_age > 30">
+                                <img class="profilePhoto2" src="../../../assets/plus 30.jfif" alt="plus30">
+                            </div>
+                        </div>
+                        <div class="w-100 textBox">
+                            <div>
+                                Age: {{item.employee_age}}
+                            </div>
+                            <div>
+                                Salary: {{item.employee_salary |number}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </mat-card>
+    </div>
+    <app-sidebar [sidePosition]='"employees"'></app-sidebar>
+</div>
+
+<ng-template #dialog>
+    <form [formGroup]="addUserForm">
+
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput class="inputStyle" type="text" class="form-control" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Age</mat-label>
+            <input matInput class="inputStyle" type="number" formControlName="age">
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Salary</mat-label>
+            <input matInput class="inputStyle" type="number" formControlName="salary">
+        </mat-form-field>
+    </form>
+    <div style="margin-top: 2em; display: flex; justify-content: space-around">
+        <button (click)="saveUser()" class="btn btn-primary">Save</button>
+        <button (click)="closeModal()" class="btn btn-secondary">Close</button>
+    </div>
+</ng-template>

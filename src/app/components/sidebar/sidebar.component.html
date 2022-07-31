@@ -1,0 +1,36 @@
+<div class="sideBar">
+    <div class="align-center">
+        <div>
+            <mat-icon class="icon">article</mat-icon>
+        </div>
+        <div>
+            Guidelines
+        </div>
+    </div>
+    <div class="align-center">
+        <div>
+            <mat-icon [ngClass]="sidePosition==='employees'?'selected':''" (click)="goToEmployees()" class="icon">group
+            </mat-icon>
+        </div>
+        <div [ngClass]="sidePosition==='employees'?'selected':''">Employees</div>
+    </div>
+    <div class="align-center">
+        <div>
+            <mat-icon class="icon">folder</mat-icon>
+        </div>
+
+        <div>Projects</div>
+    </div>
+    <div class="align-center">
+        <div>
+            <mat-icon [ngClass]="sidePosition==='profile'?'selected':''" class="icon">person_filled</mat-icon>
+        </div>
+        <div [ngClass]="sidePosition==='profile'?'selected':''">User Info</div>
+    </div>
+    <div class="align-center">
+        <div>
+            <mat-icon class="icon">chat</mat-icon>
+        </div>
+        <div>Chat</div>
+    </div>
+</div>

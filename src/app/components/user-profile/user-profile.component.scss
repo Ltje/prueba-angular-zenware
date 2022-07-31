@@ -1,0 +1,63 @@
+.profilePhoto1 {
+  width: 360px;
+  height: 340px;
+  padding: 1em;
+}
+.profilePhoto2 {
+  width: 360px;
+  height: 240px;
+  padding: 1em;
+}
+.flex_col {
+  flex-direction: column;
+}
+.text-xs {
+  font-size: small;
+  opacity: 50%;
+}
+.bold {
+  font-size: medium;
+  font-weight: bold;
+  opacity: 75%;
+}
+.pd {
+  padding: 0.5em;
+}
+.info {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  flex-direction: column;
+}
+.bodyBox {
+  height: 89vh;
+  border-bottom: 2px solid lightgray;
+  margin-bottom: 2em;
+}
+.btnSize {
+  font-size: small;
+  width: 150px;
+  height: 40px;
+}
+.btnEdit {
+  border: 1px solid #7b75fb;
+  color: #7b75fb;
+}
+.btns {
+  font-size: 24px;
+  display: flex;
+  justify-content: space-around;
+}
+.bold2 {
+  font-weight: 600;
+  opacity: 75%;
+  text-align: center;
+}
+@media screen and (min-width: 401px) {
+  .textCenter {
+    text-align: center;
+  }
+  .img {
+    display: flex;
+    justify-content: center;
+  }
+}
